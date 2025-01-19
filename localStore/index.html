@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+
+</head>
+
+<body>
+  <input type="text" placeholder="qes" id="qes">
+  <textarea name="" id="" cols="30" rows="10" id="passage" placeholder="passage">
+      Bushido is an outstanding martial arts and boxing club located in Malappuram, Kerala, focused on helping people grow through combat sports. The club is run by a coach who has won national championships and provides top-notch training in Muay Thai, Boxing, Karate, and more.
+    </textarea>
+  <div class="log" id="log"></div>
+
+  <script type="text/javascript" charset="utf-8">
+    var qes = document.getElementById('qes');
+    var passage = document.getElementById('passage');
+    var log = document.getElementById('log');
+    let endpoint = '/qna'
+
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', endpoint)
+    xhr.addEventListener(function() {
+      if (xhr.readyState == 4) {
+        log.innerHTML = xhr.response;
+      }
+    })
+    xhr.setRequestHeader("Content-Type", "application/json");
+    
+    xhr.send(JSON.stringify({
+      qes: qes.value,
+      passage: passage.value
+    }))
+  </script>
+</body>
+
+</html>
