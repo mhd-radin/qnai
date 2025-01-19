@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const https = require('https');
 const path = require("path");
 
 
@@ -13,9 +12,9 @@ app.use(express.urlencoded({ extended: true }));
 
 const qna = require('@tensorflow-models/qna');
 
-app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, "/localStore/index.html"));
-})
+// app.get('/', function(req, res) {
+//   res.sendFile(path.join(__dirname, "/localStore/index.html"));
+// })
 
 
 (async function() {
